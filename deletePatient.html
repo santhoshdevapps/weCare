@@ -1,0 +1,193 @@
+<!-- Name : Santhosh Damodharan
+Student Number : 300964037
+File descrption : Pizza spot app is used to order and deliver online pizza.
+file version : 1.0.0 -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>We charset</title>
+  <meta charset="utf-8">
+  <meta name="description" content="Pizza spot onlie site,best place to eat best pizza">
+  <meta name="keywords" content="HTML,CSS,XML,JavaScript">
+  <meta name="author" content="Santhosh Damdharan">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="refresh" content="50">
+    <link rel="icon" type="image/png" href="assert/pizza_company_icon.png"/>
+  <title>Creative - Start Bootstrap Theme</title>
+
+    <title>Creative - Start Bootstrap Theme</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+
+    <!-- Plugin CSS -->
+    <link href="vendor/magnific-popup/magnific-popup.css" rel="stylesheet">
+
+    <!-- Theme CSS -->
+    <link href="css/creative.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+
+</head>
+  <body 
+ <body ng-app="myApp" ng-controller="myCtrl">
+ <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand page-scroll" href="#page-top">We Care</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a class="page-scroll" href="index.html">About</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="index.html">Services</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="index.html">Portfolio</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="index.html">Contact</a>
+                    </li>
+      
+           <li>
+                        <a class="page-scroll" href="login.html">Login</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+
+
+ <div class="container" id="container3">
+
+<div class="input-group">
+    <input class="form-control" id="ex1" placeholder="Patient name/ID/Status Address"type="text" ng-model="Login.id">
+     <span class="input-group-btn">
+
+
+  < style="padding-top:20px"> <a href="searchPatient.html" class="btn btn-secondary" ng-click="myFunc(Login)"  role="button" style="border-width:2px;width:100%">Search</a> </>
+
+
+   </span>
+  </div>
+
+ 
+ </div>
+
+<div ng-app="myApp" ng-controller="myCtrl">
+
+<table ng-controller="myCtrl" border="1">
+
+<table class="table table-hover">
+    <thead>
+      <tr>
+
+        <th>Patient Details</th>
+        
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="x in records">
+        <td> <a href="patientDetails.html"> {{x.first_name | uppercase}}   </a>  <a href="patientDetails.html" class="btn btn"  role="button" style="border-width:2px; width:70%"> </a>   </td>
+
+     </tr> 
+    </tbody>
+  </table>
+
+
+  <!--  <div id="menu3" >
+      <h3>Name</h3>
+    <input type="text" class="form-control" id="pwd" ng-model="Dynamic.name">
+    
+    <h3>Age</h3>
+    <input type="text" class="form-control" id="pwd" ng-model="Dynamic.age">
+      
+    </div>
+
+</div> -->
+
+  
+ <script> 
+
+var app = angular.module('myApp', []);
+
+app.controller('myCtrl', function($scope, $http,$window) {
+
+//   $scope.myFunc = function(Login) {
+//   console.log("hi");
+//   console.log($scope.Login.id )
+
+// if($scope.Login.id === "santhoshdamodharan93@gmail.com"){
+//   $window.location = "";
+  
+//   }  
+// $window.location = "";
+// }
+
+var range = [];
+
+  $http.delete("https://mapd713patients.herokuapp.com/patients")
+    .then(function(response) {
+//console.log(response.data[0].name);
+ 
+for(var i=0;i<response.data.length;i++) {
+    console.log("h:"+i);
+   range.push(response.data[i]);
+    console.log("h:"+range);
+ }
+
+$scope.records =range;
+console.log(range);
+
+  
+});
+
+ // $http({
+ //        method:'POST',
+ //        url: "https://zv-rest-server.herokuapp.com/users",
+ //        params: {
+ //        name: $scope.Dynamic.name,
+ //        age: $scope.Dynamic.age,
+ //      }
+
+ //  });
+
+});
+</script>
+  
+
+<footer class="footer">
+
+
+<div class="container text-center">
+    <a href="https://www.facebook.com/santo.smokiee"><i class="fa fa-facebook"></i></a>
+    <a href="https://twitter.com/?lang=en"><i class="fa fa-twitter"></i></a>
+    <a href="https://www.linkedin.com/in/santhosh-damodharan-978b64108/"><i class="fa fa-linkedin"></i></a>
+    <a href="https://accounts.google.com/signin/v2/identifier?continue=https%3A%2F%2Fmail.google.com%2Fmail%2F&service=mail&sacu=1&rip=1&flowName=GlifWebSignIn&flowEntry=ServiceLogin"><i class="fa fa-google-plus"></i></a>
+        <a href="https://www.skype.com/en/"><i class="fa fa-skype"></i></a>
+  </div>
+
+</footer>
+
+  </body>
+
+</html>

@@ -1,0 +1,163 @@
+<!-- Name : Santhosh Damodharan
+Student Number : 300964037
+File descrption : Pizza spot app is used to order and deliver online pizza.
+file version : 1.0.0 -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>We charset</title>
+    <meta charset="utf-8">
+    <meta name="description" content="Pizza spot onlie site,best place to eat best pizza">
+    <meta name="keywords" content="HTML,CSS,XML,JavaScript">
+    <meta name="author" content="Santhosh Damdharan">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="refresh" content="50">
+    <link rel="icon" type="image/png" href="assert/pizza_company_icon.png" />
+    <title>We care</title>
+
+    \
+    <!-- Bootstrap Core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+
+    <!-- Plugin CSS -->
+    <link href="vendor/magnific-popup/magnific-popup.css" rel="stylesheet">
+
+    <!-- Theme CSS -->
+    <link href="css/creative.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+
+
+
+
+
+</head>
+ <body>
+<nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
+            </button>
+            <a class="navbar-brand page-scroll" href="#page-top">We Care</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a class="page-scroll" href="index.html">About</a>
+                </li>
+                <li>
+                    <a class="page-scroll" href="index.html">Services</a>
+                </li>
+                <li>
+                    <a class="page-scroll" href="index.html">Portfolio</a>
+                </li>
+                <li>
+                    <a class="page-scroll" href="index.html">Contact</a>
+                </li>
+
+                <li>
+                    <a class="page-scroll" href="login.html">Login</a>
+                </li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container-fluid -->
+</nav>
+
+
+<div class="container" id="container3">
+
+    <div class="input-group">
+        <input class="form-control searchId" id="id" placeholder="Patient ID" type="text">
+        <span class="input-group-btn">
+
+<button type="button" class="btn" id="clickMe">Search</button>
+<button id = "clickMe"> Search </button>
+
+
+   </span>
+    </div>
+
+
+</div>
+
+<div>
+
+    <table ng-controller="myCtrl" border="1">
+
+        <table class="table table-hover">
+            <thead>
+            <tr>
+
+                <th>Patient Details</th>
+
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    <a href="patientDetails.html" id="abc" onclick="detailsPage(this)">  </a>
+                    <a href="patientDetails.html" class="btn btn" role="button"   style="border-width:2px; width:70%">
+
+            </tr>
+            </tbody>
+        </table>
+
+        <footer class="footer">
+            </a>
+            </td>
+
+
+
+            <div class="container text-center">
+                <a href="https://www.facebook.com/santo.smokiee"><i class="fa fa-facebook"></i></a>
+                <a href="https://twitter.com/?lang=en"><i class="fa fa-twitter"></i></a>
+                <a href="https://www.linkedin.com/in/santhosh-damodharan-978b64108/"><i class="fa fa-linkedin"></i></a>
+                <a href="https://accounts.google.com/signin/v2/identifier?continue=https%3A%2F%2Fmail.google.com%2Fmail%2F&service=mail&sacu=1&rip=1&flowName=GlifWebSignIn&flowEntry=ServiceLogin"><i class="fa fa-google-plus"></i></a>
+                <a href="https://www.skype.com/en/"><i class="fa fa-skype"></i></a>
+            </div>
+
+        </footer>
+
+</body>
+<script>
+    $(document).ready(function() {
+
+        $("#clickMe").click(function() {
+            $.get("https://mapd713patients.herokuapp.com/patients/" + document.getElementById('id').value, function(data) {
+                document.getElementById("abc").innerHTML = data.first_name.toUpperCase();
+
+            });
+        });
+
+        if(localStorage.getItem("data-searchId").length>0){
+            $('#id').val(localStorage.getItem("data-searchId"));
+            $("#clickMe").trigger("click");
+        }
+    });
+    function detailsPage(event){
+        console.log(event.target);
+        localStorage.setItem("data-selectedId",$('#id').val());
+    }
+</script>
+
+</html>

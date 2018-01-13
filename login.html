@@ -1,0 +1,276 @@
+<!-- Name : Santhosh Damodharan
+Student Number : 300964037
+file version : 1.0.0 -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>We Care</title>
+  <meta charset="utf-8">
+  <meta name="description" content="Pizza spot onlie site,best place to eat best pizza">
+  <meta name="keywords" content="HTML,CSS,XML,JavaScript">
+  <meta name="author" content="Santhosh Damdharan">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="refresh" content="50">
+    <link rel="icon" type="image/png" href="assert/pizza_company_icon.png"/>
+    <!-- Bootstrap Core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+
+
+    <!-- Custom Fonts -->
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+
+    <!-- Plugin CSS -->
+    <link href="vendor/magnific-popup/magnific-popup.css" rel="stylesheet">
+
+    <!-- Theme CSS -->
+    <link href="css/creative.min.css" rel="stylesheet">
+
+	<style>
+input.ng-invalid {
+    background-color:#ff6666;
+}
+input.ng-valid {
+    background-color:lightgreen;
+}
+input.ng-pristine {
+    background-color: WHITE;
+}
+
+
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    -webkit-animation-name: fadeIn; /* Fade in the background */
+    -webkit-animation-duration: 0.4s;
+    animation-name: fadeIn;
+    animation-duration: 0.4s
+}
+
+/* Modal Content */
+.modal-content {
+    position: fixed;
+    bottom: 0;
+    background-color: #fefefe;
+    width: 100%;
+    -webkit-animation-name: slideIn;
+    -webkit-animation-duration: 0.4s;
+    animation-name: slideIn;
+    animation-duration: 0.4s
+}
+
+/* The Close Button */
+.close {
+    color: white;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal-header {
+    padding: 2px 16px;
+    background-color: red;
+    color: white;
+}
+
+.modal-body {padding: 2px 16px;}
+
+.modal-footer {
+    padding: 2px 16px;
+    background-color: #5cb85c;
+    color: white;
+}
+
+/* Add Animation */
+@-webkit-keyframes slideIn {
+    from {bottom: -300px; opacity: 0} 
+    to {bottom: 0; opacity: 1}
+}
+
+@keyframes slideIn {
+    from {bottom: -300px; opacity: 0}
+    to {bottom: 0; opacity: 1}
+}
+
+@-webkit-keyframes fadeIn {
+    from {opacity: 0} 
+    to {opacity: 1}
+}
+
+@keyframes fadeIn {
+    from {opacity: 0} 
+    to {opacity: 1}
+}
+</style>
+
+
+  
+</head>
+ <body ng-app="myApp" ng-controller="myCtrl">
+    <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand page-scroll" href="#page-top">We Care</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a class="page-scroll" href="index.html">About</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="index.html">Services</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="index.html">Portfolio</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="index.html">Contact</a>
+                    </li>
+
+           <li>
+                        <a class="page-scroll" href="login.html">Login</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+
+
+    <div class="container" id="container2">
+<CENTER><H1><b style="color:#F05F40;font-family:verdana;">LogIn </b></H1></CENTER>
+
+    <form>
+  <div class="form-group">
+    <label for="email">Email address:</label>
+    <input type="email" class="form-control" id="email" ng-model="Login.firstName" required>
+  </div>
+  <div class="form-group">
+    <label for="pwd">Password:</label>
+    <input type="password" class="form-control" id="pwd" ng-model="Login.pwd" required>
+  </div>
+  <div class="checkbox">
+    <label><input type="checkbox"> Remember me</label>
+  </div>
+
+  <div>
+<center>  <button type="submit" ng-click="myFunc(Login)" class="btn btn-success" style="border-width:2px;width:50%">Log in</button> </center>
+
+</div >
+
+<div class="container" id="container2">
+ <CENTER style="padding-top:20px"> <a href="signup.html" class="btn btn-danger"  role="button" style="border-width:2px;width:50%">Sign Up</a> </CENTER>
+</div>
+</form>
+ 
+ </div>
+
+
+</div>
+</div>
+
+<!-- vijay changes -->
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <div class="modal-header">
+      <span class="close">&times;</span>
+      <h2>Error Validation</h2>
+    </div>
+    <div class="modal-body">
+      <h3>Please enter valid username and password</h3>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- vijay changes -->
+
+
+
+<footer class="footer">
+
+
+<div class="container text-center">
+    <a href="https://www.facebook.com/santo.smokiee"><i class="fa fa-facebook"></i></a>
+    <a href="https://twitter.com/?lang=en"><i class="fa fa-twitter"></i></a>
+    <a href="https://www.linkedin.com/in/santhosh-damodharan-978b64108/"><i class="fa fa-linkedin"></i></a>
+    <a href="https://accounts.google.com/signin/v2/identifier?continue=https%3A%2F%2Fmail.google.com%2Fmail%2F&service=mail&sacu=1&rip=1&flowName=GlifWebSignIn&flowEntry=ServiceLogin"><i class="fa fa-google-plus"></i></a>
+        <a href="https://www.skype.com/en/"><i class="fa fa-skype"></i></a>
+  </div>
+
+</footer>
+
+<script>
+var app = angular.module('myApp', []);
+
+
+var modal = document.getElementById('myModal');
+var btn = document.getElementById("myBtn");
+var span = document.getElementsByClassName("close")[0];
+
+app.controller('myCtrl', function($scope, $http,$window) {
+
+
+  
+  
+  $scope.myFunc = function(Login) {
+  
+  if($scope.Login.firstName === "santhoshdamodharan93@gmail.com" && $scope.Login.pwd === "abc"){
+  $window.location = "file:///Users/santhoshdamodharan/Downloads/WeCare 2 3/homeScreen.html";
+  
+  }  
+
+  else{
+
+  modal.style.display = "block";
+  console.log($scope.Login.firstName )
+  
+  }
+        
+    }
+  
+  });
+  
+  span.onclick = function() {
+    modal.style.display = "none";
+};
+  
+  </script>
+
+</body>
+</html>

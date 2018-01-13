@@ -1,0 +1,377 @@
+<!-- Name : Santhosh Damodharan
+Student Number : 300964037
+file version : 1.0.0 -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>We Care</title>
+    <meta charset="utf-8">
+    <meta name="description" content="Pizza spot onlie site,best place to eat best pizza">
+    <meta name="keywords" content="HTML,CSS,XML,JavaScript">
+    <meta name="author" content="Santhosh Damdharan">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="refresh" content="50">
+    <link rel="icon" type="image/png" href="assert/pizza_company_icon.png" />
+    <!-- Bootstrap Core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+
+    <!-- Plugin CSS -->
+    <link href="vendor/magnific-popup/magnific-popup.css" rel="stylesheet">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+
+    <!-- Theme CSS -->
+    <link href="css/creative.min.css" rel="stylesheet">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <script>
+
+        $(document).ready(function() {
+
+            function criticalPatientStored(id) {
+                var criticalPatientArr=[];
+                var bpRate = document.getElementById("rate").value;
+                console.log("This is bp rate " + bpRate);
+                var status;
+
+                if (bpRate > 80 && bpRate <= 1000) {
+                    status = "High";
+                } else if (bpRate > 40 && bpRate <= 79) {
+                    status = "Normal";
+                } else {
+                    status = "Low";
+                }
+
+                if (status == "High" || status == "Low") {
+                    //var criticalPatientId = localStorage.getItem("data-selectedId");
+                    if(localStorage.getItem("criticalPatientId")){
+                        criticalPatientArr= JSON.parse(localStorage.getItem("criticalPatientId"));
+                    }
+                    if(id){
+                        criticalPatientArr.push(id);
+                        localStorage.setItem("criticalPatientId",JSON.stringify(criticalPatientArr));
+                        console.log("Patient id " + id + "  is " + status);
+                    }
+
+                }
+            }
+            $("#addRecord").click(function() {
+                if($("#rate").val().length>0){
+                    criticalPatientStored($('#id').val());
+                }
+                criticalPatientStored();
+                $.post("https://mapd713patients.herokuapp.com/patients/" + document.getElementById('id').value + "/records", {
+                        date: document.getElementById('date').value,
+                        nurse_name: document.getElementById('nurse').value,
+                        type: document.getElementById('type').value,
+                        category: document.getElementById('category').value,
+                        // diastolic: document.getElementById('diastolic').value,
+                        // systolic: document.getElementById('systolic').value,
+                    }, function(data, status) {
+                        var successState="added";
+                        if($('#addRecord').attr("data-type")=="update-record"){
+                            successState="updated";
+                        }
+                        alert("Record has been "+successState+" succesfully " + "\nStatus: " + status);
+
+                });
+
+            });
+
+            $("#addRecord").click(function() {
+
+                $.get("https://mapd713patients.herokuapp.com/patients/"+ document.getElementById('id').value + "/records", function(data) {
+                    document.getElementById("recordId").innerHTML = "";
+                    document.getElementById("recordId").innerHTML = data._id;
+                    document.getElementById("recordId").innerHTML = data.nurse_name;
+                    console.log(data);
+                    console.log(data._id);
+                    document.getElementById("recordId").innerHTML = data._id;
+                    document.getElementById("recordDate").innerHTML = data.date;
+                    document.getElementById("patientId").innerHTML = data.patient_id;
+                    document.getElementById("nurseName").innerHTML = data.nurse_name;
+                    document.getElementById("recordType").innerHTML = data.type;
+                    document.getElementById("recordCategory").innerHTML = data.category;
+
+
+
+                });
+            });
+
+            $("#deleteRecord").click(function() {
+
+                $.ajax({
+                    url: 'https://mapd713patients.herokuapp.com/patients/'+localStorage.getItem("data-selectedId"),
+                    type: 'DELETE',
+                    success: function(result) {
+                        // Do something with the result
+                        console.log(result)
+                    }
+                });
+
+            });
+        });
+    </script>
+
+</head>
+
+<body ng-app="myApp" ng-controller="myCtrl">
+<nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
+            </button>
+            <a class="navbar-brand page-scroll" href="#page-top">We Care</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a class="page-scroll" href="index.html">About</a>
+                </li>
+                <li>
+                    <a class="page-scroll" href="index.html">Services</a>
+                </li>
+                <li>
+                    <a class="page-scroll" href="index.html">Portfolio</a>
+                </li>
+                <li>
+                    <a class="page-scroll" href="index.html">Contact</a>
+                </li>
+                <li>
+                    <a class="page-scroll" href="login.html">Login</a>
+                </li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container-fluid -->
+</nav>
+
+
+<div class="container" id="container2">
+    <form>
+
+        <div class="imgcontainer">
+            <img src="img_avatar2.png" alt="Avatar" class="avatar">
+        </div>
+
+
+        <div class="tab">
+            <button class="tablinks" onclick="openCity(event, 'Patient Details')">Patient Details</button>
+            <button class="tablinks" onclick="openCity(event, 'Patient Record')">Patient Record</button>
+        </div>
+
+        <div id="Patient Details" class="tabcontent" ng-app="myApp" ng-controller="myCtrl">
+
+            <table class="table table-hover" ng-controller="myCtrl">
+
+                <div>
+
+                    <table class="table table-user-information">
+                        <tbody>
+                        <tr>
+                            <td><b>First Name:</b></td>
+                            <td id="detail-name"> Santhosh</td>
+                        </tr>
+                        <tr>
+                            <td><b>Last Name </b></td>
+                            <td id="detail-Lname">Damodharan</td>
+                        </tr>
+
+                        <tr>
+                            <td><b>Address</b></td>
+                            <td id="detail-address">3050 ellesmere road, 603 scarborough</td>
+                        </tr>
+                        <tr>
+                            <td><b>Date of birth</b></td>
+                            <td id="detail-dob">13/06/1993</td>
+                        </tr>
+
+                        <tr>
+                            <td><b>Department</b></td>
+                            <td id="detail-dept">ENT</td>
+                        </tr>
+
+                        <tr>
+                            <td><b>Doctor</b></td>
+                            <td id="detail-docter">ITO</td>
+                        </tr>
+
+                        <tr>
+                            <td><b>Recored created on:</b></td>
+                            <td id="recordDate"></td>
+                        </tr>
+                        <tr>
+                            <td><b>Record Id </b></td>
+                            <td id="recordId"></td>
+                        </tr>
+
+                        <tr>
+                            <td><b>Patient Id</b></td>
+                            <td id="patientId"></td>
+                        </tr>
+                        <tr>
+                            <td><b>Nurse name</b></td>
+                            <td id="nurseName"></td>
+                        </tr>
+
+                        <tr>
+                            <td><b>Type</b></td>
+                            <td id="recordType"></td>
+                        </tr>
+
+                        <tr>
+                            <td><b>Category</b></td>
+                            <td id="recordCategory"></td>
+                        </tr>
+                        <tr>
+                            <td><b>Status</b></td>
+                            <td id="recordRate"></td>
+                        </tr>
+
+                        </tbody>
+                    </table>
+
+                    <center> <button type="button" id="updateRecord" class="btn btn-danger" style="display:none;border-width:2px;width:50%">Update Patient</button> <button type="button" id="deleteRecord" class="btn btn-danger" style="margin-top:10px;border-width:2px;width:50%">Delete Patient</button> </CENTER>
+
+
+                </div>
+
+        </div>
+
+        <div id="Patient Record" class="tabcontent">
+
+            <div class="form-group">
+                <label for="email">ID :</label>
+                <input type="text" class="form-control" id="id">
+            </div>
+
+            <div class="form-group">
+                <label for="email">Date :</label>
+                <input type="date" class="form-control" id="date">
+            </div>
+            <div class="form-group">
+                <label for="name">Nurse name:</label>
+                <input type="text" class="form-control" id="nurse">
+            </div>
+            <div class="form-group">
+                <label for="address">Type:</label>
+                <input type="text" class="form-control" id="type">
+            </div>
+
+            <div class="form-group">
+                <label for="dob">Category:</label>
+                <input type="text" class="form-control" id="category">
+            </div>
+
+            <div class="form-group">
+                <label for="dept">Rate</label>
+                <input type="text" class="form-control" id="rate">
+            </div>
+            <center> <button type="button" id="addRecord" class="btn btn-success" style="border-width:2px;width:50%">Add Record</button> </center>
+        </div>
+
+
+
+
+
+        <script>
+            function openCity(evt, cityName) {
+                var i, tabcontent, tablinks;
+                var patientArray=JSON.parse(localStorage.getItem("data-patientArray"));
+                $('#id').val(localStorage.getItem("data-selectedId"));
+                if(patientArray.length>0){
+                    patientArray.forEach(function (value, index) {
+                        if(value._id == localStorage.getItem("data-selectedId")){
+                            $('#detail-name').text(value.first_name);
+                            $('#detail-Lname').text(value.last_name);
+                            $('#detail-address').text(value.address);
+                            $('#etail-docter').text(value.doctor);
+                            $('#detail-dept').text(value.department);
+                            $('#detail-dob').text(value.date_of_birth);
+                            if(localStorage.getItem("criticalPatientId")){
+                                var criticalId=JSON.parse(localStorage.getItem("criticalPatientId"));
+                                if(criticalId.indexOf(value._id)!=-1){
+                                    $('#recordRate').text("High");
+                                }
+                            }else{
+                                $('#recordRate').text("low");
+                            }
+
+                        }
+                    })
+                }
+                $.get("https://mapd713patients.herokuapp.com/patients/"+localStorage.getItem("data-selectedId")+"/records", function(data) {
+                    console.log(data);
+                    data.forEach(function (value, index) {
+                        $('#patientId').text(value.patient_id);
+                        $('#recordDate').text(value.date);
+                        $('#recordType').text(value.type);
+                        $('#recordCategory').text(value.category);
+                        $('#nurseName').text(value.nurse_name);
+                        $('#recordId').text(value._id);
+                        $('#date').val(value.date);
+                        $('#type').val(value.type);
+                        $('#date').val(value.date);
+                        $('#category').val(value.category);
+                        $('#nurse').val(value.nurse_name);
+                        $('#addRecord').text("Update record");
+                        $('#addRecord').attr("data-type","update-record");
+                        if(localStorage.getItem("criticalPatientId")){
+                            var criticalId=JSON.parse(localStorage.getItem("criticalPatientId"));
+                            if(criticalId.indexOf(value._id)!=-1){
+                                $('#rate').val("High");
+                            }
+                        }else{
+                            $('#rate').val("Low");
+                        }
+
+
+                    });
+
+
+                });
+
+                tabcontent = document.getElementsByClassName("tabcontent");
+                for (i = 0; i < tabcontent.length; i++) {
+                    tabcontent[i].style.display = "none";
+                }
+                tablinks = document.getElementsByClassName("tablinks");
+                for (i = 0; i < tablinks.length; i++) {
+                    tablinks[i].className = tablinks[i].className.replace(" active", "");
+                }
+                document.getElementById(cityName).style.display = "block";
+                evt.currentTarget.className += " active";
+            }
+
+            // Get the element with id="defaultOpen" and click on it
+            //document.getElementById("defaultOpen").click();
+
+            var app = angular.module('myApp', []);
+
+            app.controller('myCtrl', function($scope, $http, $window) {
+
+
+
+
+            });
+        </script>
+
+</div>
+</body>
+
+</html>

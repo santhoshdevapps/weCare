@@ -1,0 +1,170 @@
+<!-- Name : Santhosh Damodharan
+Student Number : 300964037
+file version : 1.0.0 -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>We Care</title>
+  <meta charset="utf-8">
+  <meta name="description" content="Pizza spot onlie site,best place to eat best pizza">
+  <meta name="keywords" content="HTML,CSS,XML,JavaScript">
+  <meta name="author" content="Santhosh Damdharan">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="refresh" content="50">
+    <link rel="icon" type="image/png" href="assert/pizza_company_icon.png"/>
+    <!-- Bootstrap Core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+
+
+    <!-- Custom Fonts -->
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+
+    <!-- Plugin CSS -->
+    <link href="vendor/magnific-popup/magnific-popup.css" rel="stylesheet">
+
+    <!-- Theme CSS -->
+    <link href="css/creative.min.css" rel="stylesheet">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<script>
+$(document).ready(function(){
+    $("#clickMe").click(function(){
+
+  var id =document.getElementById('patientId').value;
+
+
+        });
+    });
+
+</script>
+
+  
+</head>
+<body>
+<nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand page-scroll" href="#page-top">We Care</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a class="page-scroll" href="index.html">About</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="index.html">Services</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="index.html">Portfolio</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="index.html">Contact</a>
+                    </li>
+         
+           <li>
+                        <a class="page-scroll" href="login.html">Login</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+
+
+<div class="container"id="container3">
+
+   <div class="col-sm-12" style="padding-top:1px;padding-bottom:10px">
+  
+  <CENTER style="padding-top:0px"><a href="allPatientScreen.html"  onclick="listallPatient()" class="btn btn-success" role="button" style="border-width:2px;width:50%">List All Patient</a></CENTER>
+</div>
+ 
+ <div class="col-sm-12" style="padding-top:1px;padding-bottom:10px">
+  
+  <CENTER style="padding-top:0px"><a href= "allPatientScreen.html"  class="btn btn-success" role="button" style="border-width:2px;width:50%">Critical Patient</a></CENTER>
+</div>
+ <div class="col-sm-12" style="padding-top:1px;padding-bottom:10px">
+  
+<!--   <CENTER style="padding-top:0px"><a href= "allPatientScreen.html" class="btn btn-success" role="button" style="border-width:2px;width:50%">Recent Patient</a></CENTER> -->
+</div>
+  </div>
+ 
+
+<div class="container"id="container1">
+<div class="row">
+   <div class="col-sm-12" style="padding-top:10px;padding-bottom:20px">
+ 
+  <CENTER style="padding-top:20px"> <a href="addPatient.html" class="btn btn-danger"  role="button" style="border-width:2px;width:50%">ADD PATIENT</a> </CENTER>
+   </div>
+
+   <div class="container" id="container2">
+<CENTER><H1><b style="color:Green;font-family:verdana;">Quick Access </b></H1></CENTER>
+
+<div class="form-group row">
+  <div class="col-xs-12">
+    <label for="ex1" id="Phone_Text">Patient Name</label>
+    <input class="form-control" id="name" type="text">
+  </div>
+  <div class="col-xs-12">
+    <label for="ex2" id="patientId">Patient Id</label>
+    <input class="form-control searchId" id="id" type="text">
+  </div>
+  </div>
+
+   <div class="col-sm-12" style="padding-top:10px;padding-bottom:20px">
+ 
+  <CENTER style="padding-top:20px"> <a href="searchPatient.html" onclick= "searchStart(this)" class="btn btn-danger"  role="button" style="border-width:2px;width:50%">Search</a> </CENTER>
+   </div>
+ 
+ </div>
+
+   </div>
+
+</div>
+</div>
+
+
+
+
+<footer class="footer">
+
+
+<div class="container text-center">
+    <a href="https://www.facebook.com/santo.smokiee"><i class="fa fa-facebook"></i></a>
+    <a href="https://twitter.com/?lang=en"><i class="fa fa-twitter"></i></a>
+    <a href="https://www.linkedin.com/in/santhosh-damodharan-978b64108/"><i class="fa fa-linkedin"></i></a>
+    <a href="https://accounts.google.com/signin/v2/identifier?continue=https%3A%2F%2Fmail.google.com%2Fmail%2F&service=mail&sacu=1&rip=1&flowName=GlifWebSignIn&flowEntry=ServiceLogin"><i class="fa fa-google-plus"></i></a>
+        <a href="https://www.skype.com/en/"><i class="fa fa-skype"></i></a>
+  </div>
+
+</footer>
+
+</body>
+<script>
+    function searchStart(event){
+        localStorage.setItem("data-searchId",$('.searchId').val());
+    }
+    function listallPatient() {
+        localStorage.removeItem("criticalPatientId");
+        document.getElementById('id01').style.display='block';
+
+
+
+    }
+</script>
+</html>

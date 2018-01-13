@@ -1,0 +1,158 @@
+<!-- Name : Santhosh Damodharan
+Student Number : 300964037
+File descrption : Pizza spot app is used to order and deliver online pizza.
+file version : 1.0.0 -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>We Care</title>
+  <meta charset="utf-8">
+  <meta name="description" content="Pizza spot onlie site,best place to eat best pizza">
+  <meta name="keywords" content="HTML,CSS,XML,JavaScript">
+  <meta name="author" content="Santhosh Damdharan">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="refresh" content="50">
+  <!-- Bootstrap Core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+
+    <!-- Plugin CSS -->
+    <link href="vendor/magnific-popup/magnific-popup.css" rel="stylesheet">
+
+        <!-- Theme CSS -->
+    <link href="css/creative.min.css" rel="stylesheet">
+    <link rel="icon" type="image/png" href="assert/pizza_company_icon.png"/>  
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<script>
+$(document).ready(function(){
+    $("#AddPatient").click(function(){
+        $.post("https://mapd713patients.herokuapp.com/patients",
+        {
+          first_name: document.getElementById('firstName').value,
+            last_name: document.getElementById('lastName').value,      
+            address: document.getElementById('address').value,
+            date_of_birth: document.getElementById('dob').value,
+            department: document.getElementById('dept').value,
+            doctor: document.getElementById('doc').value,
+        },
+        function(data,status){
+            alert("Patient has been added succesfully " + "\nPatient name is " + document.getElementById('firstName').value + "\nStatus: " + status);
+        });
+    });
+});
+</script>
+
+</head>
+<body>
+    <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand page-scroll" href="#page-top">We Care</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a class="page-scroll" href="index.html">About</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="index.html">Services</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="index.html">Portfolio</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="index.html">Contact</a>
+                    </li>
+       
+           <li>
+                        <a class="page-scroll" href="login.html">Login</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+
+
+<div class="container" id="container2">
+<CENTER><H1><b style="color:#F05F40;font-family:verdana;">Add Patient </b></H1></CENTER>
+
+    <form>
+  <div class="form-group">
+    <label for="email">First Name :</label>
+    <input type="text" class="form-control" id="firstName">
+  </div>
+  <div class="form-group">
+    <label for="name">Last Name:</label>
+    <input type="text" class="form-control" id="lastName" >
+  </div>
+    <div class="form-group">
+    <label for="address">address:</label>
+    <input type="text" class="form-control" id="address" >
+  </div>
+
+  <div class="form-group">
+    <label for="dob">Date Of Birth:</label>
+    <input type="date" class="form-control" id="dob">
+  </div>
+
+  <div class="form-group">
+    <label for="dept">Department:</label>
+    <input type="text" class="form-control" id="dept">
+  </div>
+    <div class="form-group">
+    <label for="name">Doctor:</label>
+    <input type="text" class="form-control" id="doc" >
+  </div>
+
+<center> <button type="button" class="btn btn-success"  id="AddPatient"   style="border-width:2px;width:50%">Add Patient</button> </CENTER>
+
+</form>
+ 
+ </div>
+
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title"><center> <label><b>Patient has been added successfully!!! </b></label></center></h4>
+        </div>
+        <div class="modal-body">
+          <center> <label><b>Patient ID - </b></label>  
+      <label><b>5313</b></label> 
+    <br>  
+      <label><b>Test status - </b></label>
+ <label><b>New</b></label>
+    <br>  
+      <label><b>Booking charge - </b></label>
+     <label><b>$50</b></label></center>
+        </div>
+        <div class="modal-footer">
+        <center>  <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button> </center>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</body>
+</html>
